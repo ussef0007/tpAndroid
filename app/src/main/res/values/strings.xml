@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Remarks</string>
+    <string name="enregistrer">enregistrer</string>
+    <string name="nom">Nom</string>
+    <string name="prenom">prenom</string>
+    <string name="classe">classe</string>
+    <string name="title_activity_profile">Profile</string>
+</resources>

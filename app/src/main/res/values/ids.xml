@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="img" type="id"></item>
+    <item name="lbNom" type="id"></item>
+    <item name="EtName" type="id"></item>
+    <item name="lbprenom" type="id"></item>
+    <item name="Etprenom" type="id"></item>
+    <item name="lbemail" type="id"></item>
+    <item name="Etemail" type="id"></item>
+    <item name="etremarks" type="id"></item>
+    <item name="remarks" type="id"></item>
+    <item name="imgLik" type="id"></item>
+    <item name="txtScore" type="id"></item>
+    <item name="txtmat" type="id"></item>
+    <item name="listnotes" type="id"></item>
+    <item name="txtlistnotes" type="id" />
+    <item name="id_txtmat" type="id" />
+    <item name="id_txtScore" type="id" />
+    <item name="btncall" type="id" />
+    <item name="btnAddmat" type="id" />
+</resources>

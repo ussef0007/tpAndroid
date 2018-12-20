@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Profile"
+    android:background="@drawable/arrierplan"
+    tools:showIn="@layout/activity_profile">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:id="@id/img"
+        android:src="@drawable/ic_launcher_foreground"/>
+    <ImageButton
+        android:id="@id/btncall"
+        android:onClick="callListner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/sym_action_call"
+        android:layout_alignBottom="@id/img"
+        android:layout_alignEnd="@id/img"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:onClick="enregistrer"
+        android:text="@string/enregistrer"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignBaseline="@id/EtName"
+        android:id="@id/lbNom"
+        android:text="@string/nom" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@id/EtName"
+        android:layout_toStartOf="@id/img"
+        android:layout_toEndOf="@id/lbNom"
+        android:inputType="text"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignBaseline="@id/Etprenom"
+        android:id="@id/lbprenom"
+        android:text="@string/prenom" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@id/Etprenom"
+
+        android:layout_below="@id/EtName"
+        android:layout_toStartOf="@id/img"
+        android:layout_toEndOf="@id/lbprenom"
+        android:inputType="text"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:id="@id/lbemail"
+        android:layout_alignBaseline="@id/Etemail"
+        android:text="@string/classe" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@id/Etemail"
+        android:layout_below="@id/Etprenom"
+        android:layout_toStartOf="@id/img"
+        android:layout_toEndOf="@id/lbemail"
+        android:inputType="text"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Etemail"
+        android:id="@id/remarks"
+        android:text="@string/app_name"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/remarks"
+        android:id="@id/etremarks"
+        android:inputType="text" />
+
+
+
+
+</RelativeLayout>
