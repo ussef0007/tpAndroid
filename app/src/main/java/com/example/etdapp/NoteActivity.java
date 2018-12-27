@@ -22,7 +22,7 @@ public class NoteActivity extends AppCompatActivity {
         EditText cNote = findViewById(R.id.id_note);
         Intent i = new Intent();
         i.putExtra(EXTRAMATIERE,cMat.getText().toString());
-        i.putExtra(EXTRANOTE,cNote.getText().toString());
+        i.putExtra(EXTRANOTE,Double.parseDouble(cNote.getText().toString()));
         this.setResult(RESULT_OK,i);
         this.finish();
     }

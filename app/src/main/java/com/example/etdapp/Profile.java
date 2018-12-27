@@ -50,26 +50,30 @@ public class Profile extends AppCompatActivity implements Response.ErrorListener
     private static final String DEBUGTAG="PROFILE";
     private static final int ACTIVITY_NOTE_rea_code = 105 ;
     private  Etudiant etd = null;
+    Boolean isLoaded = true;
 
     @Override
     protected void onResume() {
         super.onResume();
         Log.w(DEBUGTAG,"onResume");
-        ConnectivityManager cm =(ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
-        if(cm.getActiveNetworkInfo() == null || !cm.getActiveNetworkInfo().isConnected()){
-            Toast.makeText(this,"No connection",Toast.LENGTH_LONG).show();
-        }else
-        {
-            Toast.makeText(this," connection",Toast.LENGTH_LONG).show();
-        }
-        //Wtask wstask = new Wtask();
-        //wstask.execute("http://belatar.name/tests/","profile.php?login=test&passwd=test");
-        //RequestQueue queue = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonObjectRequest = new  JsonObjectRequest(Request.Method.GET,
-                "http://belatar.name/tests/profile.php?login=test&passwd=test&notes=true",
-                null,this,this);
+        if(isLoaded==true){
+            ConnectivityManager cm =(ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
+            if(cm.getActiveNetworkInfo() == null || !cm.getActiveNetworkInfo().isConnected()){
+                Toast.makeText(this,"No connection",Toast.LENGTH_LONG).show();
+            }else
+            {
+                Toast.makeText(this," connection",Toast.LENGTH_LONG).show();
+            }
+            //Wtask wstask = new Wtask();
+            //wstask.execute("http://belatar.name/tests/","profile.php?login=test&passwd=test");
+            //RequestQueue queue = Volley.newRequestQueue(this);
+            JsonObjectRequest jsonObjectRequest = new  JsonObjectRequest(Request.Method.GET,
+                    "http://belatar.name/tests/profile.php?login=test&passwd=test&notes=true",
+                    null,this,this);
 
-        MySingleton.getInstance(this).getRequestQueue().add(jsonObjectRequest);
+            MySingleton.getInstance(this).getRequestQueue().add(jsonObjectRequest);
+        }
+
 
 
 
@@ -83,6 +87,7 @@ public class Profile extends AppCompatActivity implements Response.ErrorListener
 
     @Override
     public void onResponse(JSONObject response) {
+
 
         Log.e(DEBUGTAG,response.toString());
         try{
@@ -139,6 +144,7 @@ public class Profile extends AppCompatActivity implements Response.ErrorListener
 
                 remarks.setText(ProfileDbHelper.get_instance(getApplicationContext()).getRemarq(etd.getStdId()));
             }
+            isLoaded=false;
         }
         catch (Exception e){
             e.printStackTrace();
@@ -161,7 +167,14 @@ public class Profile extends AppCompatActivity implements Response.ErrorListener
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==ACTIVITY_NOTE_rea_code && resultCode==RESULT_OK)
-            Log.e(DEBUGTAG,data.getStringExtra(NoteActivity.EXTRAMATIERE));
+        {
+            //etd.addNote( new Notes(data.getStringExtra("matiere"),data.getDoubleExtra("note",0)));
+            ListView ls = findViewById(R.id.txtlistnotes);
+            //((customAdapter)ls.getAdapter()).add(new Notes(NoteActivity.EXTRAMATIERE,Double.parseDouble(NoteActivity.EXTRANOTE)));
+            ((customAdapter)ls.getAdapter()).add(new Notes(data.getStringExtra(NoteActivity.EXTRAMATIERE),
+             data.getDoubleExtra(NoteActivity.EXTRANOTE,0)));
+        }
+            Log.e(DEBUGTAG,"new mote :"+data.getStringExtra(NoteActivity.EXTRAMATIERE));
     }
 
     class Wtask extends AsyncTask<String,Void,Etudiant>{
